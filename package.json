@@ -1,0 +1,25 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "save and borrow api",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+      "start": "node --es-module-specifier-resolution=node index",
+      "dev": "nodemon --es-module-specifier-resolution=node",
+      "format": "prettier --write \"**/*.(js)\"",
+      "deploy": "npm run format && git push && git push heroku master",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "kushagra",
+    "license": "ISC",
+    "dependencies": {
+      "axios": "^0.26.1",
+     
+      "dotenv": "^16.0.0",
+      "express": "^4.17.3",
+     
+      "mongoose": "^6.2.5"
+    }
+  }
+  
