@@ -3,7 +3,7 @@ const { Schema, SchemaTypes, model } = mongoose;
 const ProductSchema = new Schema(
     {
         id: {
-            type: Number,
+            type: String,
             unique: true,
             required: true
         },
@@ -47,7 +47,7 @@ const ProductSchema = new Schema(
             type: Array,
             required: true
         },
-        pf_t_in_stock_size: {
+        pf_t_size: {
             type: Array
         }, pf_t_category: {
             type: Array
