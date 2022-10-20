@@ -17,8 +17,9 @@ const addData = async () => {
         const Data = await data()
         let res
         if (Data) {
-            // console.log(Data.length)
-            res = await Product.insertMany(Data.slice(600, 754))
+            console.log(Data.length)
+            res = await Product.insertMany(Data.slice(300, 754))
+
         }
         if (res) {
             console.log('data added successfully')

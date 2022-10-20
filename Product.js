@@ -74,39 +74,48 @@ export const data = async () => {
     }
     let filterData = await postData()
 
-    filterData.forEach((x) => {
-        let tagArray = x.tags
-        let keyArr = [];
-        tagArray.forEach(x => {
-            if (x.includes('filter')) {
-                let arr = x.split("_");
-                if (keyArr.indexOf(arr[1]) === -1) {
-                    keyArr.push(arr[1]);
-                }
-            }
-        })
-        let outputArr = [];
-        keyArr.forEach(x => {
-            let valueArr = [];
-            tagArray.forEach(y => {
-                if (y.includes("filter_" + x)) {
-                    let a = y.split('_')
-                    valueArr.push(a[2]);
-                }
-            })
-            outputArr.push({
-                [x]: valueArr
-            })
+    // filterData.forEach((x) => {
+    //     let tagArray = x.tags
+    //     let keyArr = [];
+    //     tagArray.forEach(x => {
+    //         if (x.includes('filter')) {
+    //             let arr = x.split("_");
+    //             if (keyArr.indexOf(arr[1]) === -1) {
+    //                 keyArr.push(arr[1]);
+    //             }
+    //         }
+    //     })
+    //     let outputArr = [];
+    //     keyArr.forEach(x => {
+    //         let valueArr = [];
+    //         tagArray.forEach(y => {
+    //             if (y.includes("filter_" + x)) {
+    //                 let a = y.split('_')
+    //                 valueArr.push(a[2]);
+    //             }
+    //         })
+    //         outputArr.push({
+    //             [x]: valueArr
+    //         })
 
-        })
-        outputArr.forEach((y) => {
-            x["pf_t_" + Object.keys(y)[0].replaceAll(" ", "_")] = y[Object.keys(y)[0]]
-        })
+    //     })
+    //     outputArr.forEach((y) => {
+    //         x["pf_t_" + Object.keys(y)[0].replaceAll(" ", "_")] = y[Object.keys(y)[0]]
+    //     })
+    // })
+
+    filterData.forEach((x) => {
+        x.id = x.id.replace("gid://shopify/Product/", "");
+        let available = false;
+       let varAv =  x.variants.map(y=>y.availableForSale);
+       if(varAv.indexOf(true)  != -1) available = true;
+       if(!available){
+        let iPolicy  = x.variants.map(y=>y.inventoryPolicy.toLowerCase());
+        if(iPolicy.indexOf("continue") != -1) available = true
+       }
+       x.product_available = available;
     })
 
-    filterData.forEach((x) => {
-        x.id = x.id.replace("gid://shopify/Product/", "")
-    })
     // console.log(filterData[0])
     return filterData
 }

@@ -47,19 +47,33 @@ const ProductSchema = new Schema(
             type: Array,
             required: true
         },
-        pf_t_size: {
-            type: Array
-        }, pf_t_category: {
-            type: Array
-        }, pf_t_colour: {
-            type: Array
-        }, pf_t_style: {
-            type: Array
-        }, pf_t_gender: {
-            type: Array
+        product_available: {
+            type: Boolean,
+            required: true
         }
+        // ,
+        // pf_t_size: {
+        //     type: Array
+        // }, pf_t_category: {
+        //     type: Array
+        // }, pf_t_colour: {
+        //     type: Array
+        // }, pf_t_style: {
+        //     type: Array
+        // }, pf_t_gender: {
+        //     type: Array
+        // }
     },
     { timestamps: true }
 )
+
+// Product.pre("save", async function (next) {
+//     try {
+
+//         next()
+//     } catch (e) {
+//         next(e)
+//     }
+// })
 
 export const Product = model("product", ProductSchema);

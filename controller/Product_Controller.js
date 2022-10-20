@@ -19,9 +19,26 @@ export const getProductById = async (req, res) => {
         if (!id) {
             return res.status(400).josn({ message: "id is required" })
         }
-        const data = await Product.find({id})
+        const data = await Product.find({ id })
         res.json({ status: "OK", data })
     } catch (e) {
         res.status(500).json({ message: "Error getting data" })
     }
 }
+
+// export const postNewSchemaTypes = async (req, res) => {
+//     try {
+//         const schemaKeys = req.body.keys;
+//         if (!schemaKeys) {
+//             return res.status(400).json({ message: "keys are required" })
+//         }
+//         await new Product(schemaKeys).save()
+
+//     } catch (e) {
+//         console.log(e)
+//         res.status(500).json({ message: "Error getting data" })
+
+//     }
+
+
+// }
