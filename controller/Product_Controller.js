@@ -26,19 +26,49 @@ export const getProductById = async (req, res) => {
     }
 }
 
-// export const postNewSchemaTypes = async (req, res) => {
-//     try {
-//         const schemaKeys = req.body.keys;
-//         if (!schemaKeys) {
-//             return res.status(400).json({ message: "keys are required" })
-//         }
-//         await new Product(schemaKeys).save()
 
-//     } catch (e) {
-//         console.log(e)
-//         res.status(500).json({ message: "Error getting data" })
+export const initialData = async (req, res) => {
+    try {
+       const data =  req.body
+       console.log(data,'initial')
+       res.status(200).json({message:"ok"})
 
-//     }
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({ message: "Error getting data" })
+
+    }
 
 
-// }
+}
+export const fetchingData = async (req, res) => {
+    try {
+       const data =  req.body
+       console.log(data,'fetching')
+       res.status(200).json({message:"ok"})
+
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({ message: "Error getting data" })
+
+    }
+
+
+}
+export const filteredData = async (req, res) => {
+    try {
+       const data =  req.body
+       console.log(data,'filter')
+
+       res.status(200).json({message:"ok"})
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({ message: "Error getting data" })
+
+    }
+
+
+}
+

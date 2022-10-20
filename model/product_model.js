@@ -50,6 +50,9 @@ const ProductSchema = new Schema(
         product_available: {
             type: Boolean,
             required: true
+        },
+        filter:{
+            type:Object
         }
         // ,
         // pf_t_size: {

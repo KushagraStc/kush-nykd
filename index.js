@@ -4,13 +4,20 @@ import { connect } from "./db";
 import { Product } from './model/product_model.js'
 import { data } from './Product'
 import ProductRouter from './routes/Product_routes.js'
+import { find } from "./tagsFiltered";
+import cors from "cors";
+
 config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(json());
+app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use('/api/product', ProductRouter)
 
+
+
+//  find() This will be use for our making d/f tags
 const addData = async () => {
     try {
 
